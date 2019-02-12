@@ -1,7 +1,15 @@
-# Escaneo de puertos
+# Casos de uso
 
-## Qué detecta
-* Una única IP de origen origina tráfico contra 5 puertos o más en una misma IP destino si las zonas de origen y destino son las mismas
-* OR
-* Si durante un día la misma IP de origen está generando tráfico a más de 25 puertos en una misma IP destino
+*Bienvenido a la base de datos de casos de uso*
+
+
+## Qué vas a encontrar
+* Casos de uso listo para usar en *Splunk*
+* Algunos casos de uso están traducidos a otras tecnologías
+
+
+## Normas para la colaboración
+* No está permitido push a master
+* Todos los cambios serán auditados antes de ser autorizados
+
 
