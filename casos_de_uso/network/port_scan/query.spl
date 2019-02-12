@@ -1,0 +1,11 @@
+  index=xxx_paloalto sourcetype="pan:traffic"  type=TRAFFIC 
+     (src_zone!="Inet-WAN1" OR src_zone!="Inet-WAN2")
+     (dest_zone!="Inet-WAN1" OR dest_zone!="Inet-WAN2") 
+     `Users_Subnets` `Not_Common_Ports_xxx` 
+ | bin _time span=5m
+ | stats count, values(dest_zone) as dest_zone, values(dest_port) as dest_port,
+     values(user) as User by _time src_zone src_ip dest_ip  
+ | where (src_zone != dest_zone)
+ | bin _time as Day span=1d 
+ | eventstats values(dest_port) as all_dest_ports by Day src_ip dest_ip
+ | where (mvcount(dest_port) >= 5)  OR (mvcount(all_dest_ports) >= 25)
